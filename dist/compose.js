@@ -125,7 +125,7 @@ function compose(dataLoader) {
         key: '_shouldSubscribe',
         value: function _shouldSubscribe(props) {
           var firstRun = !this._cachedWatchingProps;
-          var nextProps = (0, _lodash2.default)(props, propsToWatch);
+          var nextProps = propsToWatch ? (0, _lodash2.default)(props, propsToWatch) : props;
           var currentProps = this._cachedWatchingProps || {};
           this._cachedWatchingProps = nextProps;
 
