@@ -69,7 +69,9 @@ function compose(dataLoader) {
         _options$shouldSubscr = options.shouldSubscribe,
         shouldSubscribe = _options$shouldSubscr === undefined ? null : _options$shouldSubscr,
         _options$shouldUpdate = options.shouldUpdate,
-        shouldUpdate = _options$shouldUpdate === undefined ? null : _options$shouldUpdate;
+        shouldUpdate = _options$shouldUpdate === undefined ? null : _options$shouldUpdate,
+        _options$withRef = options.withRef,
+        withRef = _options$withRef === undefined ? false : _options$withRef;
 
     var Container = function (_React$Component) {
       (0, _inherits3.default)(Container, _React$Component);
@@ -174,6 +176,8 @@ function compose(dataLoader) {
       }, {
         key: 'render',
         value: function render() {
+          var _this3 = this;
+
           var props = this.props;
           var _state = this.state,
               data = _state.data,
@@ -190,7 +194,15 @@ function compose(dataLoader) {
 
           var finalProps = (0, _extends3.default)({}, props, data);
 
-          return _react2.default.createElement(Child, finalProps);
+          var refs = {};
+          if (withRef) {
+            var setChildRef = function setChildRef(c) {
+              _this3.child = c;
+            };
+            refs.ref = setChildRef;
+          }
+
+          return _react2.default.createElement(Child, (0, _extends3.default)({}, refs, finalProps));
         }
       }]);
       return Container;
