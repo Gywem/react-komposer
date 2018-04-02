@@ -70,14 +70,6 @@ describe('compose', () => {
       const el = shallow(<Container />);
       expect(el.html()).to.match(/Aiyo/);
     });
-
-    it('should set the child ref', () => {
-      const Container = compose((props, onData) => {
-        onData(null, { name: 'arunoda' });
-      })(Comp);
-      const el = mount(<Container name="arunoda" />);
-      expect(el.instance().child.props.name).to.be.equal('arunoda');
-    });
   });
 
   describe('dataLoader features', () => {
