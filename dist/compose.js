@@ -174,8 +174,6 @@ function compose(dataLoader) {
       }, {
         key: 'render',
         value: function render() {
-          var _this3 = this;
-
           var props = this.props;
           var _state = this.state,
               data = _state.data,
@@ -192,11 +190,7 @@ function compose(dataLoader) {
 
           var finalProps = (0, _extends3.default)({}, props, data);
 
-          var setChildRef = function setChildRef(c) {
-            _this3.child = c;
-          };
-
-          return _react2.default.createElement(Child, (0, _extends3.default)({ ref: setChildRef }, finalProps));
+          return _react2.default.createElement(Child, finalProps);
         }
       }]);
       return Container;
